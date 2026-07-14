@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>埋线减肥 · 六维辨证系统 V7.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            font-family: -apple-system, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background: #f0f4f9;
+            padding: 10px 10px 30px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .header-title {
+            background: linear-gradient(135deg, #1a2639 0%, #2a3a55 100%);
+            color: #ffffff;
+            padding: 14px 16px;
+            border-radius: 18px 18px 10px 10px;
+            margin-bottom: 12px;
+            text-align: center;
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.5;
+            box-shadow: 0 4px 12px rgba(26, 38, 57, 0.25);
+        }
+        .header-title .sub {
+            font-size: 13px;
+            font-weight: 400;
+            color: #b0c8e5;
+        }
+        .header-title .contact {
+            font-size: 13px;
+            font-weight: 400;
+            color: #b0c8e5;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2px 12px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-top: 3px;
+        }
+
+        .disclaimer-clinic {
+            background: #eef5fa;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            border: 1px solid #d7e2ed;
+            line-height: 1.5;
+        }
+        .disclaimer-clinic strong {
+            color: #0056a7;
+        }
+        .disclaimer-clinic .highlight {
+            color: #c0392b;
+            font-weight: 600;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 14px 14px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 14px rgba(0, 20, 40, 0.05);
+            border: 1px solid #eaf0f6;
+        }
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0b1a2b;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .card-title small {
+            font-size: 11px;
+            font-weight: 400;
+            color: #6b7f94;
+            background: #eef2f7;
+            padding: 0 10px;
+            border-radius: 30px;
+        }
+
+        .patient-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .patient-row label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #1a2a3a;
+            min-width: 36px;
+        }
+        .patient-row input,
+        .patient-row select {
+            flex: 1;
+            min-width: 50px;
+            padding: 5px 8px;
+            border: 1.5px solid #dce2ec;
+            border-radius: 30px;
+            font-size: 13px;
+            background: #f8faff;
+            outline: none;
+            transition: 0.1s;
+        }
+        .patient-row input:focus,
+        .patient-row select:focus {
+            border-color: #1a2639;
+            background: #fff;
+        }
+        .patient-row .small-input {
+            flex: 0 1 70px;
+            min-width: 50px;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .tag {
+            background: #f8faff;
+            border: 1.5px solid #dce2ec;
+            padding: 4px 11px;
+            border-radius: 30px;
+            font-size: 12.5px;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.12s;
+            user-select: none;
+            font-weight: 500;
+            flex: 0 1 auto;
+            line-height: 1.6;
+        }
+        .tag.active {
+            background: #1a2639;
+            border-color: #1a2639;
+            color: #fff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+        }
+        .tag .w {
+            font-size: 9px;
+            opacity: 0.7;
+            margin-left: 2px;
+        }
+
+        .bmi-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+        .bmi-row label {
+            font-size: 12.5px;
+            font-weight: 500;
+            color: #1a2a3a;
+            min-width: 44px;
+        }
+        .bmi-row input {
+            flex: 1;
+            min-width: 50px;
+            padding: 5px 8px;
+            border: 1.5px solid #dce2ec;
+            border-radius: 30px;
+            font-size: 13px;
+            background: #f8faff;
+            outline: none;
+            transition: 0.1s;
+        }
+        .bmi-row input:focus {
+            border-color: #1a2639;
+            background: #fff;
+        }
+        .bmi-row .bmi-result {
+            font-size: 12px;
+            font-weight: 600;
+            color: #1a2639;
+            padding: 3px 10px;
+            background: #eef2f7;
+            border-radius: 30px;
+            white-space: nowrap;
+        }
+        .bmi-row .bmi-result .level {
+            font-weight: 400;
+            font-size: 11px;
+            color: #4c6a8a;
+        }
+        .gender-select {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .gender-select label {
+            font-size: 12.5px;
+            font-weight: 500;
+            color: #1a2a3a;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+        .gender-select input[type="radio"] {
+            accent-color: #1a2639;
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
+        }
+
+        .contra-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .contra-tag {
+            background: #fdf2f0;
+            border: 1.5px solid #f5cdc8;
+            padding: 4px 11px;
+            border-radius: 30px;
+            font-size: 12px;
+            color: #a93226;
+            cursor: pointer;
+            transition: all 0.12s;
+            user-select: none;
+            font-weight: 500;
+        }
+        .contra-tag.active {
+            background: #c0392b;
+            border-color: #c0392b;
+            color: #fff;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 14px;
+            background: #1a2639;
+            color: white;
+            border: none;
+            border-radius: 60px;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-top: 12px;
+            transition: all 0.15s;
+            box-shadow: 0 6px 16px rgba(26, 38, 57, 0.15);
+        }
+        .btn-primary:active {
+            transform: scale(0.96);
+            background: #0d1624;
+        }
+        .btn-reset {
+            background: transparent;
+            border: 1.5px solid #d0dcec;
+            color: #4a5a6e;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 6px;
+            border-radius: 60px;
+            width: 100%;
+        }
+        .btn-reset:active {
+            background: #eef4fa;
+        }
+
+        .print-btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .btn-print {
+            flex: 1 1 calc(50% - 4px);
+            padding: 10px 6px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 60px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: all 0.15s;
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.25);
+            text-align: center;
+            cursor: pointer;
+            min-width: 120px;
+        }
+        .btn-print:active {
+            transform: scale(0.96);
+            background: #1e8449;
+        }
+        .btn-print.blue {
+            background: #2980b9;
+            box-shadow: 0 4px 12px rgba(41, 128, 185, 0.25);
+        }
+        .btn-print.blue:active {
+            background: #1f618d;
+        }
+        .btn-print.orange {
+            background: #e67e22;
+            box-shadow: 0 4px 12px rgba(230, 126, 34, 0.25);
+        }
+        .btn-print.orange:active {
+            background: #ca6f1e;
+        }
+        .btn-print.purple {
+            background: #8e44ad;
+            box-shadow: 0 4px 12px rgba(142, 68, 173, 0.25);
+        }
+        .btn-print.purple:active {
+            background: #6c3483;
+        }
+
+        #resultArea {
+            display: none;
+            animation: fadeSlide 0.35s ease;
+        }
+        #resultArea.show {
+            display: block;
+        }
+        @keyframes fadeSlide {
+            0% { opacity: 0; transform: translateY(14px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0.2in 0.18in;
+                margin: 0;
+            }
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .header-title, .disclaimer-clinic, .footer-note, .point-detail, .score-bars, .copyright {
+                display: none !important;
+            }
+            .print-header {
+                display: block !important;
+                text-align: center;
+                font-size: 20px !important;
+                font-weight: 700;
+                color: #1a2639;
+                padding-bottom: 10px;
+                border-bottom: 3px solid #1a2639;
+                margin-bottom: 14px;
+                letter-spacing: 2px;
+                page-break-before: avoid !important;
+                page-break-after: avoid !important;
+                break-before: avoid !important;
+                break-after: avoid !important;
+            }
+            .print-header .sub {
+                font-size: 14px;
+                font-weight: 400;
+                color: #4a5a6e;
+                margin-top: 2px;
+                letter-spacing: 1px;
+            }
+            #resultArea {
+                display: block !important;
+                page-break-before: avoid !important;
+                break-before: avoid !important;
+            }
+            .card {
+                box-shadow: none !important;
+                border: 1px solid #eaf0f6 !important;
+                border-radius: 8px !important;
+                padding: 10px 12px !important;
+                margin-bottom: 8px !important;
+                page-break-inside: auto !important;
+                break-inside: auto !important;
+                page-break-before: avoid !important;
+                break-before: avoid !important;
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+            }
+            .prescription-layer, .target-box, .care-box, .logic-box, .op-record, .patient-info-display, .result-type, .bmi-result-box, .tie-hint, .total-count {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            .point-tag {
+                border-color: #d7e2ed !important;
+                background: #fff !important;
+            }
+            .point-tag.suggested {
+                background: #eaf5ea !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                border-color: #8bc34a !important;
+            }
+            .point-tag.optional {
+                background: #f5f0e8 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                border-color: #d4c5a0 !important;
+            }
+            .contra-warning {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .contra-warning.menstrual {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .target-box {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                background: #e8f5e9 !important;
+                border-color: #a5d6a7 !important;
+            }
+            .care-box {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                background: #f0f7f0 !important;
+                border-color: #c8e0c8 !important;
+            }
+            .care-box .collapse-content {
+                display: block !important;
+            }
+            .bmi-result-box {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                background: #e8f0fe !important;
+                border-left-color: #4a9eff !important;
+            }
+            .logic-box {
+                background: #f8fafd !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                border-color: #e4ebf5 !important;
+            }
+            .logic-box .dimension-scores {
+                font-size: 11px !important;
+            }
+            .total-count {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                background: #eaf0f6 !important;
+            }
+            .ear-tag {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                background: #f0eef8 !important;
+                border-color: #c8c0e0 !important;
+            }
+            .result-type .desc {
+                background: #fff !important;
+            }
+            .result-type .sub {
+                font-size: 12px !important;
+            }
+            #collapseToggle {
+                display: none !important;
+            }
+            #collapseContent {
+                display: block !important;
+            }
+            .collapse-toggle {
+                display: none !important;
+            }
+            .care-box .collapse-content {
+                display: block !important;
+            }
+            .prescription-layer {
+                border-top-color: #eaf0f6 !important;
+            }
+            .op-record {
+                display: block !important;
+                margin-top: 12px;
+                border-top: 2px solid #1a2639;
+                padding-top: 10px;
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            .op-record h4 {
+                font-size: 15px;
+                font-weight: 700;
+                color: #0b1a2b;
+                margin-bottom: 6px;
+            }
+            .op-record table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 12px;
+                margin-top: 4px;
+            }
+            .op-record table th,
+            .op-record table td {
+                border: 1px solid #1a2639;
+                padding: 4px 6px;
+                text-align: center;
+            }
+            .op-record table th {
+                background: #e8eef6;
+                font-weight: 600;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .op-record table td {
+                height: 30px;
+            }
+            .bmi-result-box {
+                margin-bottom: 6px;
+            }
+            .container > *:first-child {
+                margin-top: 0 !important;
+                padding-top: 0 !important;
+            }
+            /* 通用打印内容样式（宣教、注意事项、知情同意书） */
+            .print-content-wrapper {
+                display: block !important;
+                font-size: 10.5px !important;
+                line-height: 1.3 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .print-content-wrapper .title {
+                font-size: 16px !important;
+                margin-bottom: 6px !important;
+            }
+            .print-content-wrapper .section-title {
+                font-size: 13px !important;
+                margin: 6px 0 3px !important;
+            }
+            .print-content-wrapper .section-sub {
+                font-size: 12px !important;
+                margin: 4px 0 2px !important;
+            }
+            .print-content-wrapper p {
+                margin: 1px 0 !important;
+            }
+            .print-content-wrapper ul {
+                padding-left: 16px !important;
+                margin: 1px 0 !important;
+            }
+            .print-content-wrapper li {
+                margin-bottom: 0.5px !important;
+            }
+            .print-content-wrapper table {
+                font-size: 10.5px !important;
+                margin: 3px 0 !important;
+            }
+            .print-content-wrapper th,
+            .print-content-wrapper td {
+                padding: 1px 3px !important;
+            }
+            .print-content-wrapper .sign-area {
+                margin-top: 8px !important;
+            }
+            .print-content-wrapper .center {
+                margin-top: 4px !important;
+            }
+            /* 知情同意书特别压缩 */
+            .print-content-wrapper.tongyi {
+                font-size: 9.8px !important;
+                line-height: 1.2 !important;
+            }
+            .print-content-wrapper.tongyi .title {
+                font-size: 15px !important;
+                margin-bottom: 4px !important;
+            }
+            .print-content-wrapper.tongyi .section-title {
+                font-size: 12px !important;
+                margin: 4px 0 2px !important;
+            }
+            .print-content-wrapper.tongyi .section-sub {
+                font-size: 11px !important;
+                margin: 3px 0 1px !important;
+            }
+            .print-content-wrapper.tongyi table {
+                font-size: 9.5px !important;
+            }
+            .print-content-wrapper.tongyi th,
+            .print-content-wrapper.tongyi td {
+                padding: 1px 2px !important;
+            }
+            .print-content-wrapper.tongyi .sign-area {
+                margin-top: 6px !important;
+            }
+            .print-content-wrapper.tongyi .sign-item {
+                font-size: 10px !important;
+            }
+            .print-content-wrapper.tongyi p {
+                margin: 0.5px 0 !important;
+            }
+            .print-content-wrapper.tongyi ul {
+                margin: 0.5px 0 !important;
+            }
+            .print-content-wrapper.tongyi li {
+                margin-bottom: 0.2px !important;
+            }
+            /* 避免分页 */
+            .print-content-wrapper {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+        }
+
+        .print-header {
+            display: none;
+        }
+        .op-record {
+            display: none;
+        }
+
+        .result-type {
+            background: #f2f7ff;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            border-left: 6px solid #1a2639;
+        }
+        .result-type .name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0b1a2b;
+        }
+        .result-type .sub {
+            font-size: 13px;
+            color: #4c6a8a;
+            margin-top: 2px;
+        }
+        .result-type .desc {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #1e3349;
+            line-height: 1.6;
+            background: #fff;
+            padding: 10px 14px;
+            border-radius: 10px;
+        }
+
+        .contra-warning {
+            background: #fde8e8;
+            border: 2px solid #e74c3c;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            color: #a93226;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .contra-warning small {
+            font-weight: 400;
+            font-size: 13px;
+            display: block;
+            margin-top: 4px;
+            color: #7a3a3a;
+        }
+        .contra-warning.menstrual {
+            background: #fff8e1;
+            border-color: #f39c12;
+            color: #7a5d1a;
+        }
+
+        .score-bars {
+            display: flex;
+            gap: 4px;
+            margin: 8px 0 10px;
+            flex-wrap: wrap;
+        }
+        .score-bar {
+            flex: 1;
+            min-width: 46px;
+            background: #eef2f7;
+            border-radius: 20px;
+            padding: 3px 6px;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 600;
+            color: #1a2a3a;
+        }
+        .score-bar .num {
+            font-size: 14px;
+            display: block;
+        }
+        .score-bar.wei .num { color: #c0392b; }
+        .score-bar.tan .num { color: #2980b9; }
+        .score-bar.pi .num { color: #27ae60; }
+        .score-bar.gan .num { color: #8e44ad; }
+        .score-bar.shen .num { color: #d35400; }
+        .score-bar.xue .num { color: #7f8c8d; }
+        .score-bar.high { background: #1a2639; color: #fff; }
+        .score-bar.high .num { color: #ffd966; }
+
+        .tie-hint {
+            background: #fff8e1;
+            border-radius: 10px;
+            padding: 8px 14px;
+            margin: 6px 0 8px;
+            border-left: 4px solid #f39c12;
+            font-size: 13px;
+            color: #7a5d1a;
+        }
+
+        .prescription-layer {
+            margin-top: 10px;
+            border-top: 2px dashed #eaf0f6;
+            padding-top: 10px;
+        }
+        .prescription-layer:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .prescription-layer h4 {
+            font-size: 14px;
+            color: #1a2a3a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+        .prescription-layer h4 .hint {
+            font-weight: 400;
+            font-size: 11px;
+            color: #6b7f94;
+            background: #eef2f7;
+            padding: 0 8px;
+            border-radius: 30px;
+        }
+        .prescription-layer h4 .count-badge {
+            font-weight: 400;
+            font-size: 11px;
+            color: #fff;
+            background: #1a2639;
+            padding: 0 10px;
+            border-radius: 30px;
+        }
+        .point-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .point-tag {
+            background: #ffffff;
+            border: 1.5px solid #d7e2ed;
+            border-radius: 30px;
+            padding: 4px 10px 4px 8px;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: #0b1a2b;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+        .point-tag .meridian {
+            font-weight: 400;
+            font-size: 10px;
+            color: #667e9a;
+            background: #eef4fa;
+            padding: 0 7px;
+            border-radius: 30px;
+        }
+        .point-tag .side {
+            font-weight: 400;
+            font-size: 10px;
+            color: #4c6a8a;
+        }
+        .point-tag.suggested {
+            background: #eaf5ea;
+            border-color: #8bc34a;
+        }
+        .point-tag.optional {
+            background: #f5f0e8;
+            border-color: #d4c5a0;
+        }
+
+        .total-count {
+            background: #eaf0f6;
+            border-radius: 30px;
+            padding: 4px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a2a3a;
+            margin: 6px 0 4px;
+            display: inline-block;
+        }
+
+        .point-detail {
+            background: #fafcff;
+            border-radius: 14px;
+            padding: 10px 12px;
+            margin-top: 12px;
+            border: 1px solid #e4ebf5;
+        }
+        .point-detail-item {
+            padding: 8px 0;
+            border-bottom: 1px dashed #e4ebf5;
+        }
+        .point-detail-item:last-child {
+            border-bottom: none;
+        }
+        .point-detail-item .pname {
+            font-weight: 700;
+            color: #0b1a2b;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .point-detail-item .pname .meridian-badge {
+            font-weight: 400;
+            font-size: 10px;
+            color: #4c6a8a;
+            background: #e4ebf5;
+            padding: 0 10px;
+            border-radius: 30px;
+        }
+        .point-detail-item .ploc {
+            font-size: 12.5px;
+            color: #1e3349;
+            margin: 2px 0 4px;
+            background: #f2f6fc;
+            padding: 3px 10px;
+            border-radius: 6px;
+            line-height: 1.5;
+        }
+        .point-detail-item .pnote {
+            font-size: 12px;
+            color: #b03a2e;
+            background: #fff5f2;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border-left: 3px solid #e74c3c;
+            line-height: 1.5;
+            margin-top: 2px;
+        }
+        .point-detail-item .pangle {
+            font-size: 12px;
+            color: #1a5a7a;
+            background: #e8f4fa;
+            padding: 3px 10px;
+            border-radius: 6px;
+            margin-top: 2px;
+            border-left: 3px solid #2980b9;
+        }
+
+        .ear-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 4px;
+        }
+        .ear-tag {
+            background: #f0eef8;
+            border: 1.5px solid #c8c0e0;
+            border-radius: 30px;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #4a3a6a;
+        }
+
+        .target-box {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin-top: 10px;
+            border: 1px solid #a5d6a7;
+            font-size: 12.5px;
+            color: #1e4a2a;
+            line-height: 1.6;
+        }
+        .target-box strong {
+            color: #1a5a2a;
+        }
+
+        .care-box {
+            background: #f0f7f0;
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin-top: 10px;
+            border: 1px solid #c8e0c8;
+            font-size: 12.5px;
+            color: #1e4a2a;
+            line-height: 1.6;
+        }
+        .care-box strong {
+            color: #1a5a2a;
+        }
+        .care-box ul {
+            padding-left: 18px;
+            margin: 4px 0;
+        }
+        .care-box ul li {
+            margin-bottom: 2px;
+        }
+        .care-box .collapse-toggle {
+            color: #2a6a8a;
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        .care-box .collapse-content {
+            display: none;
+            margin-top: 6px;
+            padding: 8px 12px;
+            background: #fafcfa;
+            border-radius: 8px;
+            border-left: 3px solid #2980b9;
+            font-size: 12px;
+            color: #2c3e50;
+        }
+        .care-box .collapse-content.show {
+            display: block;
+        }
+
+        .bmi-result-box {
+            background: #e8f0fe;
+            border-radius: 10px;
+            padding: 6px 14px;
+            margin: 6px 0 4px;
+            font-size: 13px;
+            color: #1a3a6a;
+            border-left: 4px solid #4a9eff;
+        }
+        .bmi-result-box strong {
+            color: #0b1a2b;
+        }
+
+        .logic-box {
+            background: #f8fafd;
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin-top: 12px;
+            border: 1px solid #e4ebf5;
+            font-size: 12.5px;
+            color: #2c4058;
+            line-height: 1.7;
+        }
+        .logic-box strong {
+            color: #0b1a2b;
+        }
+        .logic-box .dimension-scores {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px 12px;
+            font-size: 12px;
+            color: #3a4e66;
+            margin: 4px 0;
+        }
+
+        .patient-info-display {
+            background: #f8faff;
+            border-radius: 10px;
+            padding: 10px 14px;
+            border: 1px solid #eaf0f6;
+            font-size: 14px;
+            color: #0b1a2b;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        .patient-info-display .label {
+            font-weight: 600;
+            color: #4a5a6e;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 11px;
+            color: #7a8ba0;
+            margin-top: 18px;
+            padding-top: 12px;
+            border-top: 1px solid #e4ebf5;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 12px;
+            color: #4c6a8a;
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid #e4ebf5;
+            line-height: 1.6;
+        }
+        .copyright strong {
+            color: #1a2639;
+        }
+        .copyright .thanks {
+            font-size: 12px;
+            color: #6b7f94;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 400px) {
+            .tag { font-size: 11px; padding: 3px 9px; }
+            .score-bar { min-width: 38px; font-size: 9px; padding: 2px 4px; }
+            .score-bar .num { font-size: 12px; }
+            .header-title { font-size: 15px; padding: 12px 14px; }
+            .bmi-row input { min-width: 40px; font-size: 12px; padding: 4px 6px; }
+            .point-tag { font-size: 11.5px; padding: 3px 8px 3px 6px; }
+            .result-type .name { font-size: 18px; }
+            .bmi-row label { font-size: 11px; min-width: 36px; }
+            .gender-select label { font-size: 11px; }
+            .patient-row input { font-size: 12px; padding: 4px 6px; }
+            .patient-row label { font-size: 12px; min-width: 30px; }
+            .btn-print {
+                font-size: 12px;
+                padding: 8px 4px;
+                min-width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header-title no-print">
+        🧘 减重治疗配穴参考 · 六维辨证 V7.0
+        <div class="sub">依据 T/CACM 024—2017 · 三层处方架构</div>
+        <div class="contact">💡 如有建议，请联系：18623332180，259852528@qq.com</div>
+    </div>
+
+    <div class="disclaimer-clinic no-print">
+        <strong>📋 六维综合评分</strong> 整合主观症状 + 舌象 + 脉象 + 腹诊 + BMI/腰围 + 禁忌症。<br>
+        参考 <strong>T/CACM 024—2017</strong> · <strong>GB/T 21709.10—2008</strong> · <strong>GB/T 12346—2006</strong><br>
+        <span class="highlight">⚠️ 本工具为临床辅助参考，不可替代医师辨证。</span>
+    </div>
+
+    <div class="print-header">
+        重庆西计医院 体重管理门诊<br>
+        <span class="sub">中医穴位埋线治疗记录</span>
+    </div>
+
+    <div class="card no-print">
+        <div class="card-title">👤 患者信息 <small>必填</small></div>
+        <div class="patient-row">
+            <label>姓名</label>
+            <input type="text" id="patientName" placeholder="请输入姓名" value="张某某">
+            <label>性别</label>
+            <select id="patientGender">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+            <label>年龄</label>
+            <input type="number" id="patientAge" placeholder="岁" min="1" max="120" value="35" class="small-input">
+        </div>
+    </div>
+
+    <div class="card no-print">
+        <div class="card-title">📊 客观指标与安全筛查 <small>必填</small></div>
+        <div class="dimension-label" style="font-size:13px;font-weight:600;color:#1a2a3a;margin-bottom:4px;">📏 身高体重 · 腰围</div>
+        <div class="bmi-row">
+            <label>身高(cm)</label>
+            <input type="number" id="heightInput" placeholder="165" min="100" max="250" value="165">
+            <label>体重(kg)</label>
+            <input type="number" id="weightInput" placeholder="70" min="20" max="300" value="70">
+            <label>腰围(cm)</label>
+            <input type="number" id="waistInput" placeholder="85" min="50" max="200" value="85">
+        </div>
+        <div class="bmi-row" style="margin-top:6px;">
+            <div class="gender-select">
+                <label><input type="radio" name="gender" value="male" checked> 男</label>
+                <label><input type="radio" name="gender" value="female"> 女</label>
+            </div>
+            <div class="bmi-result" id="bmiDisplay">BMI: <span id="bmiValue">25.7</span> <span class="level" id="bmiLevel">超重</span></div>
+            <div class="bmi-result" id="waistDisplay" style="background:#e8f0fe;"><span id="waistLabel">腰围:</span> <span id="waistStatus">—</span></div>
+        </div>
+        <div class="dimension-label" style="font-size:13px;font-weight:600;color:#1a2a3a;margin:10px 0 5px;">🚫 禁忌症筛查</div>
+        <div class="contra-group" id="contraGroup">
+            <div class="contra-tag" data-contra="pregnant">🤰 妊娠期</div>
+            <div class="contra-tag" data-contra="bleeding">🩸 出血性疾病/抗凝</div>
+            <div class="contra-tag" data-contra="diabetes">🍬 严重糖尿病</div>
+            <div class="contra-tag" data-contra="infection">🦠 局部皮肤感染</div>
+            <div class="contra-tag" data-contra="allergy">🤧 埋线材料过敏</div>
+            <div class="contra-tag" data-contra="mental">🧠 严重精神疾病</div>
+            <div class="contra-tag" data-contra="immuno">🛡️ 免疫缺陷/免疫抑制</div>
+            <div class="contra-tag" data-contra="heart">❤️ 严重心脑血管病</div>
+            <div class="contra-tag" data-contra="fever">🌡️ 发热/急性感染</div>
+            <div class="contra-tag" data-contra="menstrual">🩸 月经期(慎用)</div>
+        </div>
+        <div style="font-size:11px;color:#7a8ba0;margin-top:4px;">提示：<strong style="color:#c0392b;">经期</strong>为慎用症，建议避开；其余为禁忌症。</div>
+    </div>
+
+    <div class="card no-print">
+        <div class="card-title">📝 主观症状 <small>可多选</small></div>
+        <div class="tag-group" id="symptomGroup">
+            <div class="tag" data-type="wei" data-score="3">🔥 消谷善饥 <span class="w">+3</span></div>
+            <div class="tag" data-type="wei" data-score="2">💧 口干喜冷饮 <span class="w">+2</span></div>
+            <div class="tag" data-type="wei" data-score="2">💩 便秘/干结 <span class="w">+2</span></div>
+            <div class="tag" data-type="wei" data-score="1">👅 口臭/牙龈肿痛 <span class="w">+1</span></div>
+            <div class="tag" data-type="tan" data-score="3">🧴 身体沉重/痰多 <span class="w">+3</span></div>
+            <div class="tag" data-type="tan" data-score="2">🫧 皮肤油腻/浮肿 <span class="w">+2</span></div>
+            <div class="tag" data-type="tan" data-score="2">😴 嗜睡/头重如裹 <span class="w">+2</span></div>
+            <div class="tag" data-type="pi" data-score="3">😩 神疲乏力/气短 <span class="w">+3</span></div>
+            <div class="tag" data-type="pi" data-score="2">🥶 怕冷/手脚不温 <span class="w">+2</span></div>
+            <div class="tag" data-type="pi" data-score="2">💩 大便稀溏/虚胖 <span class="w">+2</span></div>
+            <div class="tag" data-type="gan" data-score="3">😤 情绪抑郁/烦躁 <span class="w">+3</span></div>
+            <div class="tag" data-type="gan" data-score="2">💢 胸胁胀满/叹气 <span class="w">+2</span></div>
+            <div class="tag" data-type="gan" data-score="1">🔄 月经不调/乳胀 <span class="w">+1</span></div>
+            <div class="tag" data-type="shen" data-score="3">❄️ 畏寒肢冷/腰膝酸软 <span class="w">+3</span></div>
+            <div class="tag" data-type="shen" data-score="2">🌙 五更泄泻/夜尿频 <span class="w">+2</span></div>
+            <div class="tag" data-type="xue" data-score="3">🌑 面色晦暗/局部刺痛 <span class="w">+3</span></div>
+            <div class="tag" data-type="xue" data-score="2">🟣 舌质紫暗/瘀斑 <span class="w">+2</span></div>
+        </div>
+    </div>
+
+    <div class="card no-print">
+        <div class="card-title">👅 舌象 <small>选1~3项</small></div>
+        <div class="tag-group" id="tongueGroup">
+            <div class="tag" data-type="wei" data-score="3">舌质红 <span class="w">+3</span></div>
+            <div class="tag" data-type="pi" data-score="3">舌质淡白 <span class="w">+3</span></div>
+            <div class="tag" data-type="gan" data-score="2">舌质紫暗/瘀点 <span class="w">+2</span></div>
+            <div class="tag" data-type="xue" data-score="3">舌质紫暗/瘀斑 <span class="w">+3</span></div>
+            <div class="tag" data-type="tan" data-score="2">舌体胖大/齿痕 <span class="w">+2</span></div>
+            <div class="tag" data-type="shen" data-score="2">舌体胖大/淡嫩 <span class="w">+2</span></div>
+            <div class="tag" data-type="wei" data-score="3">舌苔黄厚腻 <span class="w">+3</span></div>
+            <div class="tag" data-type="tan" data-score="3">舌苔白厚腻 <span class="w">+3</span></div>
+            <div class="tag" data-type="pi" data-score="1">舌苔薄白 <span class="w">+1</span></div>
+            <div class="tag" data-type="shen" data-score="1">舌苔白滑 <span class="w">+1</span></div>
+            <div class="tag" data-type="wei" data-score="2">舌苔剥落/少苔 <span class="w">+2</span></div>
+        </div>
+    </div>
+
+    <div class="card no-print">
+        <div class="card-title">🌊 脉象 <small>选1~3项</small></div>
+        <div class="tag-group" id="pulseGroup">
+            <div class="tag" data-type="tan" data-score="3">脉滑 <span class="w">+3</span></div>
+            <div class="tag" data-type="wei" data-score="3">脉数（速）<span class="w">+3</span></div>
+            <div class="tag" data-type="pi" data-score="3">脉沉 <span class="w">+3</span></div>
+            <div class="tag" data-type="pi" data-score="2">脉弱 <span class="w">+2</span></div>
+            <div class="tag" data-type="shen" data-score="3">脉沉细 <span class="w">+3</span></div>
+            <div class="tag" data-type="pi" data-score="2">脉迟（慢）<span class="w">+2</span></div>
+            <div class="tag" data-type="gan" data-score="3">脉弦 <span class="w">+3</span></div>
+            <div class="tag" data-type="pi" data-score="2">脉细 <span class="w">+2</span></div>
+            <div class="tag" data-type="tan" data-score="2">脉濡（软）<span class="w">+2</span></div>
+            <div class="tag" data-type="xue" data-score="3">脉涩 <span class="w">+3</span></div>
+        </div>
+    </div>
+
+    <div class="card no-print">
+        <div class="card-title">🤲 腹诊 <small>选1~3项</small></div>
+        <div class="tag-group" id="abdomenGroup">
+            <div class="tag" data-type="wei" data-score="2">心下痞硬/压痛 <span class="w">+2</span></div>
+            <div class="tag" data-type="pi" data-score="2">脐周压痛 <span class="w">+2</span></div>
+            <div class="tag" data-type="gan" data-score="3">两胁下压痛 <span class="w">+3</span></div>
+            <div class="tag" data-type="gan" data-score="2">右胁下压痛(肝胆) <span class="w">+2</span></div>
+            <div class="tag" data-type="tan" data-score="2">腹部胀满/鼓音 <span class="w">+2</span></div>
+            <div class="tag" data-type="pi" data-score="2">脐下悸动/按之软 <span class="w">+2</span></div>
+            <div class="tag" data-type="gan" data-score="3">腹部结节/条索 <span class="w">+3</span></div>
+            <div class="tag" data-type="xue" data-score="3">腹部固定刺痛/拒按 <span class="w">+3</span></div>
+            <div class="tag" data-type="pi" data-score="3">腹部凉冷 <span class="w">+3</span></div>
+            <div class="tag" data-type="shen" data-score="3">腰腹冷痛/喜温喜按 <span class="w">+3</span></div>
+        </div>
+    </div>
+
+    <button class="btn-primary no-print" id="analyzeBtn">🧬 六维综合 · 生成三层处方</button>
+    <button class="btn-reset no-print" id="resetBtn">↺ 清空所有选择</button>
+
+    <div id="resultArea">
+        <div class="card">
+            <div id="contraWarning" style="display:none;"></div>
+            <div class="patient-info-display" id="patientInfoDisplay">
+                <div><span class="label">姓名：</span><span id="displayName">张某某</span> ｜
+                    <span class="label">性别：</span><span id="displayGender">男</span> ｜
+                    <span class="label">年龄：</span><span id="displayAge">35</span>岁 ｜
+                    <span class="label">BMI：</span><span id="displayBmi">25.7</span> ｜
+                    <span class="label">判定：</span><span id="displayBmiLevel">超重</span> ｜
+                    <span class="label" id="displayWaistLabel">腰围：</span><span id="displayWaist">85 cm</span> <span id="displayWaistRisk" style="color:#c0392b;font-weight:600;"></span>
+                </div>
+            </div>
+
+            <div class="result-type" id="resultType">
+                <div class="name" id="resTitle">综合辨证结果</div>
+                <div class="sub" id="resBadge">六维积分 · 主导证型</div>
+                <div class="desc" id="resDesc">基于舌、脉、腹、症、BMI/腰围、禁忌六维综合评定。</div>
+            </div>
+
+            <div class="score-bars no-print" id="scoreBars">
+                <div class="score-bar wei"><span class="num" id="sWei">0</span>胃热</div>
+                <div class="score-bar tan"><span class="num" id="sTan">0</span>痰湿</div>
+                <div class="score-bar pi"><span class="num" id="sPi">0</span>脾虚</div>
+                <div class="score-bar gan"><span class="num" id="sGan">0</span>肝郁</div>
+                <div class="score-bar shen"><span class="num" id="sShen">0</span>脾肾阳虚</div>
+                <div class="score-bar xue"><span class="num" id="sXue">0</span>气滞血瘀</div>
+            </div>
+
+            <div id="tieHint" style="display:none;" class="tie-hint">
+                ⚖️ <strong>多证型积分接近</strong>，建议结合临床经验综合判断，灵活加减。
+            </div>
+
+            <div id="totalCountDisplay" class="total-count">💡 本次推荐共 <span id="totalCount">0</span> 穴</div>
+            <div style="font-size:12px;color:#4c6a8a;margin:-2px 0 6px;">建议每次埋线总数控制在 8~12 个以内，主穴优先，配穴精选。</div>
+
+            <div class="prescription-layer">
+                <h4>📍 通用主穴 <span class="hint">每次选 3~5 个</span> <span class="count-badge" id="commonCount">0</span></h4>
+                <div class="point-tags" id="commonPoints"></div>
+            </div>
+            <div class="prescription-layer">
+                <h4>🔬 辨证配穴 <span class="hint">每次选 2~3 个</span> <span class="count-badge" id="syndromeCount">0</span></h4>
+                <div class="point-tags" id="syndromePoints"></div>
+            </div>
+            <div class="prescription-layer">
+                <h4>🔗 背俞配穴 <span class="hint">每次选 1~2 个</span> <span class="count-badge" id="backCount">0</span></h4>
+                <div class="point-tags" id="backPoints"></div>
+            </div>
+            <div class="prescription-layer">
+                <h4>📍 局部阿是穴 <span class="hint">每次选 2~3 个</span></h4>
+                <div class="point-tags" id="ashiPoints">
+                    <div class="point-tag optional">腹部脂肪堆积处 <span class="side">(大肚腩)</span></div>
+                    <div class="point-tag optional">大腿内侧 <span class="side">(股内侧)</span></div>
+                    <div class="point-tag optional">上臂后侧 <span class="side">(蝴蝶袖)</span></div>
+                    <div class="point-tag optional">腰臀部 <span class="side">(游泳圈)</span></div>
+                </div>
+                <div style="font-size:11px;color:#7a8ba0;margin-top:3px;">建议：触诊皮下脂肪结节、条索状物处选点埋线。</div>
+            </div>
+
+            <div class="prescription-layer">
+                <h4>👂 耳穴参考 <span class="hint">配合贴压</span></h4>
+                <div class="ear-points">
+                    <span class="ear-tag">饥点</span>
+                    <span class="ear-tag">内分泌</span>
+                    <span class="ear-tag">脾</span>
+                    <span class="ear-tag">胃</span>
+                    <span class="ear-tag">肝</span>
+                    <span class="ear-tag">神门</span>
+                </div>
+                <div style="font-size:11px;color:#7a8ba0;margin-top:3px;">每次选 2~3 个，王不留行籽贴压，每日按压 3~5 次，每次 3~5 分钟。</div>
+            </div>
+
+            <div class="point-detail no-print" id="pointDetail">
+                <h4 style="font-size:14px;color:#0b1a2b;margin-bottom:6px;">📐 穴位定位 · 进针角度 · 操作注意</h4>
+                <div id="detailContent"></div>
+            </div>
+
+            <div class="target-box" id="targetBox">
+                <strong>🎯 疗程疗效参考（T/CACM 024—2017 7.1）</strong>
+                <div id="targetContent">
+                    体重下降 <strong>≥5%</strong> 为有效，<strong>≥10%</strong> 为显效，<strong>≥15%</strong> 为临床治愈。<br>
+                    建议每疗程（3次）评估一次体重、腰围、BMI变化。
+                </div>
+            </div>
+
+            <div class="care-box">
+                <strong>📋 疗程设计与术后护理</strong>
+                <ul>
+                    <li><strong>疗程：</strong>每2周埋线1次，3次为1个疗程。建议连续治疗2~3个疗程。</li>
+                    <li><strong>术后24h：</strong>埋线部位勿沾水，避免剧烈运动。</li>
+                    <li><strong>饮食：</strong>清淡饮食，忌辛辣、油腻、生冷。</li>
+                    <li><strong>生活：</strong>配合适度有氧运动（每周≥150分钟）。</li>
+                    <li><strong>观察：</strong>若出现局部红肿热痛、发热等异常，及时就医。</li>
+                </ul>
+                <div style="margin-top:6px;">
+                    <span class="collapse-toggle" id="collapseToggle">▼ 晕针预案（点击展开）</span>
+                    <div class="collapse-content" id="collapseContent">
+                        <strong>参照 T/CACM 024—2017 8.4：</strong><br>
+                        • 操作前询问患者有无晕针史。<br>
+                        • 若出现头晕、恶心、面色苍白、出冷汗等晕针前兆，<strong>立即终止操作</strong>。<br>
+                        • 取平卧位，松解衣领，保暖，饮温开水或糖水。<br>
+                        • 若症状不缓解，按临床急救流程处理。
+                    </div>
+                </div>
+            </div>
+
+            <div class="logic-box" id="logicBox">
+                <strong>📖 六维辨证依据</strong>
+                <div id="logicDetail"></div>
+            </div>
+
+            <div class="op-record">
+                <h4>📋 操作记录</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:20%;">第几次埋线治疗</th>
+                            <th style="width:30%;">使用材料</th>
+                            <th style="width:25%;">操作日期</th>
+                            <th style="width:25%;">医生签名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>第1次</td><td></td><td></td><td></td></tr>
+                        <tr><td>第2次</td><td></td><td></td><td></td></tr>
+                        <tr><td>第3次</td><td></td><td></td><td></td></tr>
+                        <tr><td>第4次</td><td></td><td></td><td></td></tr>
+                        <tr><td>第5次</td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ===== 打印按钮组 ===== -->
+            <div class="print-btn-group no-print">
+                <button class="btn-print" id="printBianzhengBtn">🖨️ 打印选穴结果</button>
+                <button class="btn-print blue" id="printXuanjiaoBtn">📄 埋线减肥宣教</button>
+                <button class="btn-print orange" id="printTongyiBtn">📋 知情同意书</button>
+                <button class="btn-print purple" id="printZhuyiBtn">⚠️ 埋线后注意事项</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-note no-print">
+        ⚠️ 本工具参考 <strong>T/CACM 024—2017</strong> · <strong>GB/T 21709.10—2008</strong> · <strong>GB/T 12346—2006</strong>
+    </div>
+
+    <div class="copyright no-print">
+        <strong>可自由传播使用，如需商用，请联系作者：</strong><br>
+        陆军军医大学 · 护理学院  王宗华  18623332180
+        <div class="thanks">
+            <strong>致谢：</strong><br>
+            重庆西计医院 · 健康体重管理门诊 ｜ 陈陵 ｜ 刘巧洋 ｜ 夏旭 ｜ 张念琪 ｜ 沈秀利
+        </div>
+    </div>
+
+</div>
+
+<script>
+    (function() {
+        // ===== 知识库（完整保留） =====
+        const COMMON_POINTS = [
+            { name: '中脘', meridian: '任脉', side: '' },
+            { name: '天枢', meridian: '足阳明', side: '双' },
+            { name: '大横', meridian: '足太阴', side: '双' },
+            { name: '带脉', meridian: '足少阳', side: '双' },
+            { name: '丰隆', meridian: '足阳明', side: '双' },
+            { name: '足三里', meridian: '足阳明', side: '双' },
+            { name: '气海', meridian: '任脉', side: '' }
+        ];
+
+        const SYNDROME = {
+            wei: {
+                name: '胃热湿阻证',
+                desc: '胃火偏盛，兼夹湿邪。多见消谷善饥、口干喜饮、便秘、舌红苔黄腻、脉数。',
+                syndromePoints: [
+                    { name: '曲池', meridian: '手阳明', side: '双' },
+                    { name: '内庭', meridian: '足阳明', side: '双' }
+                ],
+                backPoints: [
+                    { name: '胃俞', meridian: '足太阳', side: '双' }
+                ],
+                logic: '胃热炽盛，通降失和。通用主穴通腑降浊；曲池清阳明热，内庭清胃火；胃俞调胃。'
+            },
+            tan: {
+                name: '痰湿内盛证',
+                desc: '脾虚运化无权，水湿聚而成痰。多见体胖困重、痰多、嗜睡、苔白腻、脉滑。',
+                syndromePoints: [
+                    { name: '阴陵泉', meridian: '足太阴', side: '双' }
+                ],
+                backPoints: [
+                    { name: '脾俞', meridian: '足太阳', side: '双' }
+                ],
+                logic: '脾虚生湿，湿聚成痰。通用主穴健运中焦；阴陵泉利湿；脾俞健脾治本。'
+            },
+            pi: {
+                name: '脾虚湿困证',
+                desc: '脾气虚弱，运化无力，水湿内停。多见神疲、便溏、舌淡胖、脉沉细弱。',
+                syndromePoints: [
+                    { name: '三阴交', meridian: '足太阴', side: '双' }
+                ],
+                backPoints: [
+                    { name: '脾俞', meridian: '足太阳', side: '双' }
+                ],
+                logic: '健脾益气，运化水湿。通用主穴温运中焦；三阴交调肝脾肾；脾俞健脾治本。'
+            },
+            gan: {
+                name: '肝郁气滞证',
+                desc: '情志不遂，肝失疏泄，横逆犯脾。多见烦躁、胁胀、叹气、脉弦。',
+                syndromePoints: [
+                    { name: '太冲', meridian: '足厥阴', side: '双' },
+                    { name: '阳陵泉', meridian: '足少阳', side: '双' }
+                ],
+                backPoints: [
+                    { name: '肝俞', meridian: '足太阳', side: '双' }
+                ],
+                logic: '疏肝理气，调和肝脾。通用主穴和胃；太冲行气，阳陵泉疏肝利胆；肝俞疏肝。'
+            },
+            shen: {
+                name: '脾肾阳虚证',
+                desc: '脾肾阳气亏虚，气化无力。多见畏寒肢冷、腰膝酸软、五更泄泻、舌淡胖、脉沉细。',
+                syndromePoints: [
+                    { name: '三阴交', meridian: '足太阴', side: '双' }
+                ],
+                backPoints: [
+                    { name: '脾俞', meridian: '足太阳', side: '双' },
+                    { name: '肾俞', meridian: '足太阳', side: '双' }
+                ],
+                logic: '温补脾肾，助阳化气。通用主穴温补下元；三阴交调肝脾肾；脾俞健脾，肾俞温肾。'
+            },
+            xue: {
+                name: '气滞血瘀证',
+                desc: '气机郁滞，血行不畅。多见面色晦暗、舌质紫暗有瘀斑、脉涩、局部刺痛。',
+                syndromePoints: [
+                    { name: '太冲', meridian: '足厥阴', side: '双' },
+                    { name: '血海', meridian: '足太阴', side: '双' }
+                ],
+                backPoints: [
+                    { name: '肝俞', meridian: '足太阳', side: '双' },
+                    { name: '膈俞', meridian: '足太阳', side: '双' }
+                ],
+                logic: '行气活血，化瘀通络。通用主穴和胃；太冲行气，血海活血化瘀；肝俞疏肝，膈俞活血。'
+            }
+        };
+
+        const POINT_DETAILS = {
+            '中脘': { loc: '上腹部，前正中线上，脐上4寸。', angle: '直刺0.8~1.2寸。', note: '胃充盈时严禁进针，勿透过壁腹膜。' },
+            '天枢': { loc: '腹部，脐中旁开2寸。', angle: '直刺0.8~1.2寸。', note: '避开腹壁下动静脉。肠梗阻、腹膜炎禁用。' },
+            '大横': { loc: '腹部，脐中旁开4寸。', angle: '直刺0.8~1.2寸。', note: '避开腹壁动静脉。' },
+            '带脉': { loc: '侧腹部，第11肋骨游离端下方垂线与脐水平线交点。', angle: '向下平刺0.5~1寸。', note: '避开腹壁动静脉。' },
+            '丰隆': { loc: '小腿前外侧，外踝尖上8寸，距胫骨前缘二横指。', angle: '直刺0.8~1.5寸。', note: '避开胫前动静脉。化痰要穴。' },
+            '足三里': { loc: '小腿前外侧，犊鼻下3寸，距胫骨前缘一横指。', angle: '直刺0.8~1.5寸。', note: '避开胫前动静脉。' },
+            '气海': { loc: '下腹部，前正中线上，脐下1.5寸。', angle: '直刺0.8~1.2寸。', note: '勿透过壁腹膜。孕妇慎用。' },
+            '曲池': { loc: '肘横纹外侧端，屈肘时尺泽与肱骨外上髁连线中点。', angle: '直刺0.8~1.5寸。', note: '避开桡神经。高血压慎用重刺激。' },
+            '内庭': { loc: '足背，第2、3趾间，趾蹼缘后方赤白肉际处。', angle: '直刺0.3~0.5寸。', note: '避免损伤趾神经血管。' },
+            '阴陵泉': { loc: '小腿内侧，胫骨内侧髁下缘与胫骨内侧缘之间的凹陷中。', angle: '直刺0.5~1寸。', note: '不可深刺，以免进入腘窝损伤胫神经和腘动、静脉。' },
+            '三阴交': { loc: '小腿内侧，内踝尖上3寸，胫骨内侧缘后方。', angle: '直刺0.5~1寸。', note: '避开胫后动静脉。孕妇禁用。' },
+            '太冲': { loc: '足背，第1、2跖骨间，跖骨底结合部前方凹陷中。', angle: '直刺0.3~0.5寸。', note: '避开足背动脉。' },
+            '阳陵泉': { loc: '小腿外侧，腓骨小头前下方凹陷中。', angle: '直刺0.8~1.2寸。', note: '避开腓总神经。' },
+            '血海': { loc: '大腿内侧，髌底内侧端上2寸。', angle: '直刺0.8~1.2寸。', note: '避开股动、静脉。' },
+            '脾俞': { loc: '背部，第11胸椎棘突下，旁开1.5寸。', angle: '向内斜刺0.5~0.8寸。', note: '不可深刺，以免伤及脾脏。' },
+            '胃俞': { loc: '背部，第12胸椎棘突下，旁开1.5寸。', angle: '向内斜刺0.5~0.8寸。', note: '不可深刺，以免伤及肾脏。' },
+            '肝俞': { loc: '背部，第9胸椎棘突下，旁开1.5寸。', angle: '向内斜刺0.5~0.8寸。', note: '不可深刺，以免伤及肝脏。' },
+            '肾俞': { loc: '背部，第2腰椎棘突下，旁开1.5寸。', angle: '直刺0.5~1寸。', note: '不可深刺，以免伤及肾脏。' },
+            '膈俞': { loc: '背部，第7胸椎棘突下，旁开1.5寸。', angle: '向内斜刺0.5~0.8寸。', note: '不可深刺，以免伤及膈肌。' }
+        };
+
+        // ===== DOM 引用 =====
+        const symptomGroup = document.getElementById('symptomGroup');
+        const tongueGroup = document.getElementById('tongueGroup');
+        const pulseGroup = document.getElementById('pulseGroup');
+        const abdomenGroup = document.getElementById('abdomenGroup');
+        const contraGroup = document.getElementById('contraGroup');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const printBianzhengBtn = document.getElementById('printBianzhengBtn');
+        const printXuanjiaoBtn = document.getElementById('printXuanjiaoBtn');
+        const printTongyiBtn = document.getElementById('printTongyiBtn');
+        const printZhuyiBtn = document.getElementById('printZhuyiBtn');
+        const resultArea = document.getElementById('resultArea');
+        const heightInput = document.getElementById('heightInput');
+        const weightInput = document.getElementById('weightInput');
+        const waistInput = document.getElementById('waistInput');
+        const bmiValue = document.getElementById('bmiValue');
+        const bmiLevel = document.getElementById('bmiLevel');
+        const waistStatus = document.getElementById('waistStatus');
+        const waistLabel = document.getElementById('waistLabel');
+        const patientName = document.getElementById('patientName');
+        const patientGender = document.getElementById('patientGender');
+        const patientAge = document.getElementById('patientAge');
+
+        // ===== 性别同步（统一从下拉菜单读取） =====
+        function getGender() {
+            return patientGender.value === '男' ? 'male' : 'female';
+        }
+
+        function syncRadioFromSelect() {
+            const val = patientGender.value;
+            document.querySelector('input[name="gender"][value="male"]').checked = (val === '男');
+            document.querySelector('input[name="gender"][value="female"]').checked = (val === '女');
+        }
+        patientGender.addEventListener('change', function() {
+            syncRadioFromSelect();
+            updateMetrics();
+        });
+        document.querySelectorAll('input[name="gender"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                patientGender.value = this.value === 'male' ? '男' : '女';
+                updateMetrics();
+            });
+        });
+        syncRadioFromSelect();
+
+        // ===== 中心型肥胖判定（修复性别差异） =====
+        function checkCentralObesity(age, gender, waist, height) {
+            if (!age || age <= 0 || !waist || waist <= 0) return null;
+            if (!gender || !height || height <= 0) return null;
+            if (age >= 6 && age <= 17) {
+                const whtr = waist / height;
+                if (gender === 'male') {
+                    return { isCentral: whtr > 0.48, method: 'WHtR', whtr: whtr, threshold: 0.48 };
+                } else if (gender === 'female') {
+                    if (age >= 6 && age <= 9) {
+                        return { isCentral: whtr > 0.48, method: 'WHtR', whtr: whtr, threshold: 0.48 };
+                    } else if (age >= 10 && age <= 17) {
+                        return { isCentral: whtr > 0.46, method: 'WHtR', whtr: whtr, threshold: 0.46 };
+                    }
+                }
+            }
+            if (age >= 18) {
+                if (gender === 'male') {
+                    return { isCentral: waist >= 90, method: '腰围绝对值', threshold: '≥90cm' };
+                } else if (gender === 'female') {
+                    return { isCentral: waist >= 85, method: '腰围绝对值', threshold: '≥85cm' };
+                }
+            }
+            if (age < 6) {
+                return { isCentral: false, method: '不适用', threshold: '参见儿童保健科' };
+            }
+            return null;
+        }
+
+        function getBMICategory(bmi, age) {
+            if (bmi === null) return null;
+            if (age < 18) return null;
+            if (bmi < 18.5) return '体重过轻';
+            if (bmi < 24) return '正常';
+            if (bmi < 28) return '超重';
+            return '肥胖';
+        }
+
+        function getScores(groupId) {
+            const s = { wei: 0, tan: 0, pi: 0, gan: 0, shen: 0, xue: 0 };
+            document.querySelectorAll(`#${groupId} .tag.active`).forEach(t => {
+                const type = t.dataset.type;
+                const score = parseInt(t.dataset.score, 10) || 1;
+                if (s.hasOwnProperty(type)) s[type] += score;
+            });
+            return s;
+        }
+
+        function getContra() {
+            const active = document.querySelectorAll('#contraGroup .contra-tag.active');
+            return Array.from(active).map(t => t.dataset.contra);
+        }
+
+        function calcBMI(height, weight) {
+            if (!height || !weight || height <= 0 || weight <= 0) return null;
+            const h = height / 100;
+            return weight / (h * h);
+        }
+
+        function getDominant(scores) {
+            const sorted = Object.entries(scores).filter(([k, v]) => v > 0).sort((a, b) => b[1] - a[1]);
+            if (sorted.length === 0) return { dominant: 'wei', isTie: false, maxScore: 0 };
+            const maxVal = sorted[0][1];
+            const isTie = sorted.length >= 2 &&
+                (sorted[0][1] - sorted[1][1] <= 1 ||
+                    (sorted[0][1] - sorted[1][1]) / sorted[0][1] <= 0.15);
+            return { dominant: sorted[0][0], isTie, maxScore: maxVal };
+        }
+
+        function getSecondary(scores, dom, threshold) {
+            const result = [];
+            for (const [k, v] of Object.entries(scores)) {
+                if (k !== dom && v >= scores[dom] * threshold && v > 0) {
+                    result.push(k);
+                }
+            }
+            return result;
+        }
+
+        function updateMetrics() {
+            const h = parseFloat(heightInput.value);
+            const w = parseFloat(weightInput.value);
+            const wa = parseFloat(waistInput.value);
+            const gender = getGender();
+            const age = parseInt(patientAge.value) || 0;
+
+            const bmi = calcBMI(h, w);
+            if (bmi !== null && isFinite(bmi) && bmi > 0) {
+                bmiValue.textContent = bmi.toFixed(1);
+                const bmiCat = getBMICategory(bmi, age);
+                if (bmiCat !== null) {
+                    bmiLevel.textContent = bmiCat;
+                } else {
+                    bmiLevel.textContent = '';
+                }
+            } else {
+                bmiValue.textContent = '—';
+                bmiLevel.textContent = '输入身高体重';
+            }
+
+            if (age >= 6 && age <= 17) {
+                waistLabel.textContent = '腰围身高比:';
+            } else {
+                waistLabel.textContent = '腰围:';
+            }
+
+            if (wa && wa > 0 && h && h > 0 && age > 0 && gender) {
+                const result = checkCentralObesity(age, gender, wa, h);
+                if (result) {
+                    if (result.method === 'WHtR') {
+                        const whtrVal = result.whtr.toFixed(3);
+                        if (result.isCentral) {
+                            waistStatus.textContent = `${whtrVal} (中心性肥胖 ⚠️)`;
+                            waistStatus.style.color = '#c0392b';
+                        } else {
+                            waistStatus.textContent = `${whtrVal} (正常)`;
+                            waistStatus.style.color = '#27ae60';
+                        }
+                    } else if (result.method === '腰围绝对值') {
+                        const thresholdStr = result.threshold;
+                        if (result.isCentral) {
+                            waistStatus.textContent = `${thresholdStr} (中心性肥胖 ⚠️)`;
+                            waistStatus.style.color = '#c0392b';
+                        } else {
+                            const cleanThreshold = thresholdStr.replace('≥', '');
+                            waistStatus.textContent = `<${cleanThreshold} (正常)`;
+                            waistStatus.style.color = '#27ae60';
+                        }
+                    } else if (result.method === '不适用') {
+                        waistStatus.textContent = result.threshold;
+                        waistStatus.style.color = '#7a8ba0';
+                    }
+                } else {
+                    waistStatus.textContent = '输入有效数据';
+                    waistStatus.style.color = '#7a8ba0';
+                }
+            } else {
+                waistStatus.textContent = '输入腰围';
+                waistStatus.style.color = '#7a8ba0';
+            }
+        }
+
+        heightInput.addEventListener('input', updateMetrics);
+        weightInput.addEventListener('input', updateMetrics);
+        waistInput.addEventListener('input', updateMetrics);
+        patientAge.addEventListener('input', updateMetrics);
+        updateMetrics();
+
+        // ===== 标签点击切换 =====
+        document.querySelectorAll('.tag').forEach(t => {
+            t.addEventListener('click', function() {
+                this.classList.toggle('active');
+                if (navigator.vibrate) navigator.vibrate(5);
+            });
+        });
+        document.querySelectorAll('.contra-tag').forEach(t => {
+            t.addEventListener('click', function() {
+                this.classList.toggle('active');
+                if (navigator.vibrate) navigator.vibrate(5);
+            });
+        });
+
+        // ===== 重置 =====
+        resetBtn.addEventListener('click', function() {
+            document.querySelectorAll('.tag, .contra-tag').forEach(t => t.classList.remove('active'));
+            resultArea.classList.remove('show');
+            heightInput.value = '165';
+            weightInput.value = '70';
+            waistInput.value = '85';
+            patientName.value = '张某某';
+            patientGender.value = '男';
+            patientAge.value = '35';
+            syncRadioFromSelect();
+            updateMetrics();
+        });
+
+        // ===== 折叠组件 =====
+        document.getElementById('collapseToggle').addEventListener('click', function() {
+            const content = document.getElementById('collapseContent');
+            content.classList.toggle('show');
+            this.textContent = content.classList.contains('show') ? '▲ 收起' : '▼ 晕针预案（点击展开）';
+        });
+
+        function updatePatientDisplay(bmi, bmiCat, waist, gender, age, height) {
+            const name = patientName.value.trim() || '未填写';
+            const g = patientGender.value || '男';
+            const a = patientAge.value || '—';
+            document.getElementById('displayName').textContent = name;
+            document.getElementById('displayGender').textContent = g;
+            document.getElementById('displayAge').textContent = a;
+            document.getElementById('displayBmi').textContent = bmi !== null ? bmi.toFixed(1) : '—';
+            const ageNum = parseInt(age) || 0;
+            if (ageNum < 18) {
+                document.getElementById('displayBmiLevel').textContent = '';
+            } else {
+                document.getElementById('displayBmiLevel').textContent = bmiCat || '—';
+            }
+            document.getElementById('displayWaist').textContent = '';
+
+            const displayLabel = document.getElementById('displayWaistLabel');
+            if (ageNum >= 6 && ageNum <= 17) {
+                displayLabel.textContent = '腰围身高比：';
+            } else {
+                displayLabel.textContent = '腰围：';
+            }
+
+            const riskEl = document.getElementById('displayWaistRisk');
+            const h = parseFloat(height) || 0;
+
+            if (waist && waist > 0 && ageNum > 0 && gender && h > 0) {
+                const result = checkCentralObesity(ageNum, gender, waist, h);
+                if (result) {
+                    if (result.method === 'WHtR') {
+                        const whtrVal = result.whtr.toFixed(3);
+                        if (result.isCentral) {
+                            riskEl.textContent = `${whtrVal} · 中心性肥胖 ⚠️`;
+                            riskEl.style.color = '#c0392b';
+                        } else {
+                            riskEl.textContent = `${whtrVal} · 正常`;
+                            riskEl.style.color = '#27ae60';
+                        }
+                    } else if (result.method === '腰围绝对值') {
+                        const thresholdStr = result.threshold;
+                        if (result.isCentral) {
+                            riskEl.textContent = `${thresholdStr} · 中心性肥胖 ⚠️`;
+                            riskEl.style.color = '#c0392b';
+                        } else {
+                            const cleanThreshold = thresholdStr.replace('≥', '');
+                            riskEl.textContent = `<${cleanThreshold} · 正常`;
+                            riskEl.style.color = '#27ae60';
+                        }
+                    } else if (result.method === '不适用') {
+                        riskEl.textContent = `${result.threshold}`;
+                        riskEl.style.color = '#7a8ba0';
+                    }
+                } else {
+                    riskEl.textContent = '';
+                }
+            } else {
+                riskEl.textContent = '';
+            }
+        }
+
+        // ===== 分析主逻辑 =====
+        function analyze() {
+            const sym = getScores('symptomGroup');
+            const tongue = getScores('tongueGroup');
+            const pulse = getScores('pulseGroup');
+            const abd = getScores('abdomenGroup');
+
+            const total = { wei: 0, tan: 0, pi: 0, gan: 0, shen: 0, xue: 0 };
+            for (const k of Object.keys(total)) {
+                total[k] = (sym[k] || 0) + (tongue[k] || 0) + (pulse[k] || 0) + (abd[k] || 0);
+            }
+
+            const anySelected = document.querySelectorAll('.tag.active').length;
+            if (anySelected === 0) {
+                alert('请至少选择一项体征或症状，以便生成参考方案。');
+                return;
+            }
+
+            const h = parseFloat(heightInput.value);
+            const w = parseFloat(weightInput.value);
+            const wa = parseFloat(waistInput.value);
+            const gender = getGender();
+            const age = parseInt(patientAge.value) || 0;
+            const bmi = calcBMI(h, w);
+            const bmiCat = getBMICategory(bmi, age);
+            const bmiValid = bmi !== null && isFinite(bmi) && bmi > 0;
+
+            const contra = getContra();
+            const hasMenstrual = contra.includes('menstrual');
+            const hasRealContra = contra.some(c => c !== 'menstrual');
+
+            const { dominant, isTie, maxScore } = getDominant(total);
+            const secondary = getSecondary(total, dominant, 0.5);
+
+            renderResult(dominant, secondary, total, sym, tongue, pulse, abd,
+                bmi, bmiCat, bmiValid, wa, gender, age, h,
+                hasRealContra, hasMenstrual, isTie);
+        }
+
+        function renderResult(primary, secondary, total, sym, tongue, pulse, abd,
+            bmi, bmiCat, bmiValid, waist, gender, age, height,
+            hasRealContra, hasMenstrual, isTie) {
+
+            const data = SYNDROME[primary];
+            if (!data) return;
+
+            updatePatientDisplay(bmi, bmiCat, waist, gender, age, height);
+
+            document.getElementById('resTitle').textContent = data.name;
+            const secondaryNames = secondary.length ? secondary.map(s => SYNDROME[s].name).join('、') : '无';
+            document.getElementById('resBadge').textContent =
+                `主导积分 ${total[primary]} 分 · 兼夹: ${secondaryNames}`;
+            document.getElementById('resDesc').textContent = data.desc;
+
+            const warnEl = document.getElementById('contraWarning');
+            if (hasRealContra) {
+                warnEl.style.display = 'block';
+                warnEl.className = 'contra-warning';
+                const names = document.querySelectorAll('#contraGroup .contra-tag.active');
+                const labels = Array.from(names).filter(t => t.dataset.contra !== 'menstrual').map(t => t.textContent.trim());
+                warnEl.innerHTML = `🚫 检测到禁忌症：${labels.join('、')}<small>存在禁忌症，不建议进行埋线治疗。请评估后决定。</small>`;
+            } else if (hasMenstrual) {
+                warnEl.style.display = 'block';
+                warnEl.className = 'contra-warning menstrual';
+                warnEl.innerHTML = `🩸 检测到「月经期」慎用症<small>建议避开月经期进行治疗，或酌情延期。请评估后决定。</small>`;
+            } else {
+                warnEl.style.display = 'none';
+            }
+
+            const mapId = { wei: 'sWei', tan: 'sTan', pi: 'sPi', gan: 'sGan', shen: 'sShen', xue: 'sXue' };
+            for (const k of Object.keys(total)) {
+                document.getElementById(mapId[k]).textContent = total[k];
+            }
+            const maxVal = Math.max(...Object.values(total));
+            document.querySelectorAll('.score-bar').forEach(el => el.classList.remove('high'));
+            for (const k of Object.keys(total)) {
+                if (total[k] === maxVal && maxVal > 0) {
+                    document.querySelector(`.score-bar.${k}`).classList.add('high');
+                }
+            }
+
+            document.getElementById('tieHint').style.display = isTie ? 'block' : 'none';
+
+            const commonHtml = COMMON_POINTS.map(p =>
+                `<div class="point-tag suggested">${p.name} <span class="meridian">${p.meridian}</span> ${p.side ? '<span class="side">'+p.side+'</span>' : ''}</div>`
+            ).join('');
+            document.getElementById('commonPoints').innerHTML = commonHtml;
+            document.getElementById('commonCount').textContent = COMMON_POINTS.length;
+
+            let syndromeSet = new Set();
+            data.syndromePoints.forEach(p => syndromeSet.add(JSON.stringify(p)));
+            secondary.forEach(s => {
+                SYNDROME[s].syndromePoints.forEach(p => syndromeSet.add(JSON.stringify(p)));
+            });
+            const syndromeArr = Array.from(syndromeSet).map(s => JSON.parse(s));
+            document.getElementById('syndromePoints').innerHTML = syndromeArr.length ?
+                syndromeArr.map(p =>
+                    `<div class="point-tag">${p.name} <span class="meridian">${p.meridian}</span> ${p.side ? '<span class="side">'+p.side+'</span>' : ''}</div>`
+                ).join('') :
+                '<span style="font-size:12px;color:#7a8ba0;">无特定配穴</span>';
+            document.getElementById('syndromeCount').textContent = syndromeArr.length;
+
+            let backSet = new Set();
+            data.backPoints.forEach(p => backSet.add(JSON.stringify(p)));
+            secondary.forEach(s => {
+                SYNDROME[s].backPoints.forEach(p => backSet.add(JSON.stringify(p)));
+            });
+            const backArr = Array.from(backSet).map(s => JSON.parse(s));
+            document.getElementById('backPoints').innerHTML = backArr.length ?
+                backArr.map(p =>
+                    `<div class="point-tag">${p.name} <span class="meridian">${p.meridian}</span> ${p.side ? '<span class="side">'+p.side+'</span>' : ''}</div>`
+                ).join('') :
+                '<span style="font-size:12px;color:#7a8ba0;">无特定背俞配穴</span>';
+            document.getElementById('backCount').textContent = backArr.length;
+
+            const totalCount = COMMON_POINTS.length + syndromeArr.length + backArr.length;
+            document.getElementById('totalCount').textContent = totalCount;
+
+            const allNames = new Set();
+            COMMON_POINTS.forEach(p => allNames.add(p.name));
+            syndromeArr.forEach(p => allNames.add(p.name));
+            backArr.forEach(p => allNames.add(p.name));
+
+            let detailHtml = '';
+            allNames.forEach(name => {
+                const info = POINT_DETAILS[name];
+                if (!info) return;
+                detailHtml += `
+                    <div class="point-detail-item">
+                        <div class="pname">📍 ${name}</div>
+                        <div class="ploc"><strong>定位：</strong>${info.loc}</div>
+                        <div class="pangle"><strong>进针：</strong>${info.angle}</div>
+                        <div class="pnote"><strong>⚠️ 注意：</strong>${info.note}</div>
+                    </div>
+                `;
+            });
+            document.getElementById('detailContent').innerHTML = detailHtml || '<span style="color:#7a8ba0;font-size:13px;">无穴位详情</span>';
+
+            const secondaryLogic = secondary.length ? '，兼夹「' + secondary.map(s => SYNDROME[s].name).join('、') + '」' : '';
+            const logicDetail = `
+                <div class="dimension-scores">
+                    <span>🗣 症状：胃热 ${sym.wei} | 痰湿 ${sym.tan} | 脾虚 ${sym.pi} | 肝郁 ${sym.gan} | 脾肾阳虚 ${sym.shen} | 气滞血瘀 ${sym.xue}</span>
+                    <span>👅 舌象：胃热 ${tongue.wei} | 痰湿 ${tongue.tan} | 脾虚 ${tongue.pi} | 肝郁 ${tongue.gan} | 脾肾阳虚 ${tongue.shen} | 气滞血瘀 ${tongue.xue}</span>
+                    <span>🌊 脉象：胃热 ${pulse.wei} | 痰湿 ${pulse.tan} | 脾虚 ${pulse.pi} | 肝郁 ${pulse.gan} | 脾肾阳虚 ${pulse.shen} | 气滞血瘀 ${pulse.xue}</span>
+                    <span>🤲 腹诊：胃热 ${abd.wei} | 痰湿 ${abd.tan} | 脾虚 ${abd.pi} | 肝郁 ${abd.gan} | 脾肾阳虚 ${abd.shen} | 气滞血瘀 ${abd.xue}</span>
+                </div>
+                <strong>综合判定：</strong>主导「${data.name}」${secondaryLogic}。
+                ${isTie ? '⚠️ 多证型积分接近，建议结合临床经验综合判断。' : ''}
+                ${hasRealContra ? '🚫 存在禁忌症，建议暂缓埋线治疗。' : ''}
+                <br><small style="color:#5a6f88;">治法：${data.logic}</small>
+                <br><small style="color:#5a6f88;">参考：T/CACM 024—2017 · GB/T 21709.10—2008 · GB/T 12346—2006</small>
+            `;
+            document.getElementById('logicDetail').innerHTML = logicDetail;
+
+            if (bmiValid && bmi > 0) {
+                const target5 = (bmi * 0.05).toFixed(1);
+                const target10 = (bmi * 0.10).toFixed(1);
+                const target15 = (bmi * 0.15).toFixed(1);
+                document.getElementById('targetContent').innerHTML = `
+                    当前 BMI <strong>${bmi.toFixed(1)}</strong> ｜ 目标（5%↓）<strong>${(bmi - parseFloat(target5)).toFixed(1)}</strong> ｜
+                    显效（10%↓）<strong>${(bmi - parseFloat(target10)).toFixed(1)}</strong> ｜
+                    临床治愈（15%↓）<strong>${(bmi - parseFloat(target15)).toFixed(1)}</strong><br>
+                    体重下降 <strong>≥5%</strong> 为有效，<strong>≥10%</strong> 为显效，<strong>≥15%</strong> 为临床治愈。<br>
+                    建议每疗程（3次）评估一次体重、腰围、BMI变化。
+                `;
+            }
+
+            resultArea.classList.add('show');
+            setTimeout(() => resultArea.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+        }
+
+        analyzeBtn.addEventListener('click', analyze);
+
+        // ====================================================
+        // 打印功能（知情同意书使用 .tongyi 类压缩）
+        // ====================================================
+        function printContent(htmlContent, title, isTongyi) {
+            var win = window.open('', '_blank');
+            var wrapperClass = 'print-content-wrapper' + (isTongyi ? ' tongyi' : '');
+            win.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + title + '</title><style>' +
+                'body { font-family: "Microsoft YaHei", sans-serif; margin: 0.2in; font-size: 10.5px; line-height: 1.3; }' +
+                '.print-content-wrapper { max-width: 100%; }' +
+                '.print-content-wrapper .title { text-align: center; font-size: 16px; font-weight: 700; margin-bottom: 6px; }' +
+                '.print-content-wrapper .section-title { font-weight: 700; font-size: 13px; margin: 6px 0 3px; }' +
+                '.print-content-wrapper .section-sub { font-weight: 600; font-size: 12px; margin: 4px 0 2px; }' +
+                '.print-content-wrapper p { margin: 1px 0; }' +
+                '.print-content-wrapper ul { padding-left: 16px; margin: 1px 0; }' +
+                '.print-content-wrapper li { margin-bottom: 0.5px; }' +
+                '.print-content-wrapper table { width: 100%; border-collapse: collapse; font-size: 10.5px; margin: 3px 0; }' +
+                '.print-content-wrapper th, .print-content-wrapper td { border: 1px solid #000; padding: 1px 3px; text-align: left; vertical-align: top; }' +
+                '.print-content-wrapper th { background: #eef2f7; font-weight: 600; }' +
+                '.print-content-wrapper .sign-area { margin-top: 8px; display: flex; justify-content: space-between; }' +
+                '.print-content-wrapper .sign-item { width: 45%; }' +
+                '.print-content-wrapper .center { text-align: center; margin-top: 4px; }' +
+                '.print-content-wrapper .note { font-size: 10px; color: #555; margin-top: 4px; }' +
+                '.print-content-wrapper .bold { font-weight: 600; }' +
+                '.print-content-wrapper .mt-20 { margin-top: 8px; }' +
+                // 知情同意书特供压缩
+                '.tongyi { font-size: 9.8px !important; line-height: 1.2 !important; }' +
+                '.tongyi .title { font-size: 15px !important; margin-bottom: 4px !important; }' +
+                '.tongyi .section-title { font-size: 12px !important; margin: 4px 0 2px !important; }' +
+                '.tongyi .section-sub { font-size: 11px !important; margin: 3px 0 1px !important; }' +
+                '.tongyi table { font-size: 9.5px !important; }' +
+                '.tongyi th, .tongyi td { padding: 1px 2px !important; }' +
+                '.tongyi .sign-area { margin-top: 6px !important; }' +
+                '.tongyi .sign-item { font-size: 10px !important; }' +
+                '.tongyi p { margin: 0.5px 0 !important; }' +
+                '.tongyi ul { margin: 0.5px 0 !important; }' +
+                '.tongyi li { margin-bottom: 0.2px !important; }' +
+                // 防止分页
+                '.print-content-wrapper { page-break-inside: avoid !important; break-inside: avoid !important; }' +
+                '</style></head><body><div class="' + wrapperClass + '">');
+            win.document.write(htmlContent);
+            win.document.write('</div></body></html>');
+            win.document.close();
+            win.print();
+        }
+
+        // 宣教
+        function getXuanjiaoHTML() {
+            return `
+                <div class="title">穴位埋线减重治疗</div>
+                <div class="section-title">一、什么是穴位埋线减肥？</div>
+                <p>穴位埋线减肥是一种中医微创减重技术。医生将一根极细的可吸收医用线（约1~2厘米），通过专用针具植入人体特定穴位皮下。这根线会在体内持续刺激穴位14~21天，相当于“长效针灸”。</p>
+                <div class="section-title">二、为什么能帮助减重？</div>
+                <ul>
+                    <li><strong>抑制食欲：</strong>调节下丘脑摄食中枢，降低饥饿感，减少进食量。</li>
+                    <li><strong>促进代谢：</strong>加速脂肪分解与能量消耗，改善糖脂代谢紊乱。</li>
+                    <li><strong>调理体质：</strong>根据个人体质（如痰湿、脾虚、肝郁等）辨证选穴，改善易胖体质。</li>
+                    <li><strong>调节内分泌：</strong>改善胰岛素抵抗、瘦素抵抗，对多囊卵巢、月经不调等有辅助改善作用。</li>
+                </ul>
+                <div class="section-title">三、治疗流程与注意事项</div>
+                <div class="section-sub">1. 疗程设计</div>
+                <p>每2周埋线1次，3次为1个疗程。建议连续治疗2~3个疗程，配合饮食运动效果更佳。</p>
+                <div class="section-sub">2. 术前准备</div>
+                <ul>
+                    <li>避开月经期</li>
+                    <li>告知医生病史（过敏、糖尿病、凝血异常等）</li>
+                    <li>埋线当天清淡饮食</li>
+                </ul>
+                <div class="section-sub">3. 术后护理</div>
+                <ul>
+                    <li>24小时内埋线部位勿沾水</li>
+                    <li>3天内避免剧烈运动</li>
+                    <li>清淡饮食，忌辛辣、油腻、生冷</li>
+                </ul>
+                <div class="section-sub">4. 禁忌症</div>
+                <p>孕妇、严重糖尿病（血糖控制不佳）、出血性疾病、局部皮肤感染、对埋线材料过敏者不宜进行。</p>
+                <div class="section-title">四、效果怎么样？费用多少？</div>
+                <div class="section-sub">1. 临床效果</div>
+                <ul>
+                    <li>3个月平均减重约8~12kg（有个体差异）</li>
+                    <li>改善便秘、疲倦、月经紊乱等症状</li>
+                    <li>有效降低腰围、改善胰岛素抵抗（需配合饮食运动调整）</li>
+                </ul>
+                <div class="section-sub">2. 费用参考</div>
+                <ul>
+                    <li>单次费用：300~600元</li>
+                    <li>疗程费用：1800~3600元（3月一个疗程）</li>
+                    <li>自费项目，医保不报</li>
+                </ul>
+                <div class="section-title">五、常见疑问</div>
+                <ul>
+                    <li><strong>疼吗？</strong> 埋线时略有酸胀感，类似打针，多数人可耐受。术后局部可能有轻微酸胀，1~3天自行缓解。</li>
+                    <li><strong>需要休息吗？</strong> 无需开刀，创伤极小，随做随走，不影响正常工作和生活。术后24小时避免沾水和剧烈运动即可。</li>
+                    <li><strong>会反弹吗？</strong> 埋线帮助建立新的代谢平衡，配合健康饮食和规律运动，可长期有效控制反弹；但若仍有不良生活习惯，体重仍可能回升。</li>
+                    <li><strong>多久见效？</strong> 一般1~2次后开始出现食欲下降、体重变化，完成一个疗程后效果稳定。</li>
+                    <li><strong>能同时打减肥针吗？</strong> 可以，两者联用能起到“1+1>2”的效果。</li>
+                </ul>
+            `;
+        }
+
+        // 知情同意书
+        function getTongyiHTML() {
+            return `
+                <div class="title">穴位埋线减重治疗知情同意书（V1.0）</div>
+                <div class="section-title">一、治疗项目说明</div>
+                <p>穴位埋线减重属于中医微创治疗技术，通过将可吸收医用线植入特定穴位皮下，产生持续刺激（约14~21天），以调节食欲、改善代谢。本治疗方案可单独实施，亦可与减肥针（GLP-1受体激动剂）、内镜下胃径向压缩术（ERCG）联合或序贯应用。</p>
+                <div class="section-title">二、适应证与禁忌证</div>
+                <table>
+                    <thead><tr><th style="width:20%;">项目</th><th>内容</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>适应证</strong></td><td>BMI≥24.0kg/m²，经饮食运动控制无效，减重意愿强烈，无明确禁忌证者</td></tr>
+                        <tr><td><strong>绝对禁忌证</strong></td><td>妊娠期、严重凝血功能障碍、未控制的严重糖尿病、局部皮肤感染、对埋线材料过敏、精神疾病不能配合</td></tr>
+                        <tr><td><strong>相对禁忌证</strong></td><td>月经期（建议避开）、严重心脑血管疾病、免疫缺陷或长期使用免疫抑制剂</td></tr>
+                    </tbody>
+                </table>
+                <div class="section-title">三、治疗前需明确的医疗风险</div>
+                <div class="section-sub">1. 与穴位埋线相关的风险</div>
+                <table>
+                    <thead><tr><th style="width:20%;">风险类别</th><th>具体描述</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>局部反应</strong></td><td>埋线部位可能出现红、肿、热、痛、酸胀感，一般持续1~3天，偶见皮下瘀斑或硬结，多数可自行吸收。</td></tr>
+                        <tr><td><strong>感染</strong></td><td>无菌操作不规范或术后护理不当可致局部感染，表现为红肿热痛加剧、化脓、发热。需及时就医处理。</td></tr>
+                        <tr><td><strong>过敏反应</strong></td><td>对埋线材料（如PGLA线）过敏者可出现局部瘙痒、皮疹、甚至全身性过敏反应。</td></tr>
+                        <tr><td><strong>神经血管损伤</strong></td><td>操作不当可致局部神经（如桡神经、腓总神经）或血管损伤，表现为麻木、运动障碍或血肿。</td></tr>
+                        <tr><td><strong>晕针</strong></td><td>少数患者因紧张、饥饿、体质虚弱等可出现头晕、恶心、面色苍白、出冷汗、甚至一过性意识丧失。</td></tr>
+                        <tr><td><strong>埋线脱落或移位</strong></td><td>极少数情况下线体可排出体外或移位至非目标组织。</td></tr>
+                        <tr><td><strong>疗效不佳</strong></td><td>因个体差异，部分患者减重效果不显著，需调整方案或联合其他治疗。</td></tr>
+                    </tbody>
+                </table>
+                <div class="section-sub">2. 与联合减肥针（GLP-1RA）相关的附加风险</div>
+                <table>
+                    <thead><tr><th style="width:20%;">风险类别</th><th>具体描述</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>胃肠道反应</strong></td><td>恶心、呕吐、腹泻、便秘、食欲减退，多数为轻至中度，随用药时间可减轻。</td></tr>
+                        <tr><td><strong>低血糖</strong></td><td>联合胰岛素或磺脲类药物时低血糖风险增加，需监测血糖。</td></tr>
+                        <tr><td><strong>胰腺炎</strong></td><td>罕见但严重，表现为持续性剧烈上腹痛，需紧急就医。</td></tr>
+                        <tr><td><strong>胆囊疾病</strong></td><td>胆石症、胆囊炎风险增高。</td></tr>
+                        <tr><td><strong>心率增快</strong></td><td>部分患者出现静息心率升高。</td></tr>
+                        <tr><td><strong>甲状腺C细胞肿瘤</strong></td><td>有甲状腺髓样癌病史或家族史者禁用。</td></tr>
+                    </tbody>
+                </table>
+                <div class="section-title">四、术后注意事项与自我管理</div>
+                <table>
+                    <thead><tr><th style="width:20%;">时间节点</th><th>注意事项</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>埋线术后24小时</strong></td><td>埋线部位禁沾水，避免污染；观察局部有无红、肿、热、痛加重。</td></tr>
+                        <tr><td><strong>埋线术后3天</strong></td><td>避免剧烈运动、重体力劳动、桑拿、游泳。</td></tr>
+                        <tr><td><strong>饮食管理</strong></td><td>清淡饮食，忌辛辣、油腻、生冷、酒精；联合减肥针者注意规律进食，避免低血糖。</td></tr>
+                        <tr><td><strong>全程监测</strong></td><td>每周记录体重、腰围；每疗程（3次埋线）评估一次；出现异常症状（剧烈腹痛、高热、呕血、黑便、严重过敏）立即就医。</td></tr>
+                    </tbody>
+                </table>
+                <div class="section-title">五、知情确认</div>
+                <p>本人已仔细阅读并充分理解以上内容，包括治疗的适应证、禁忌证、可预见的风险、术后护理要求及替代治疗方案。本人已知晓：</p>
+                <ul>
+                    <li>该治疗为自费项目，费用以医疗机构公示为准。</li>
+                    <li>减重效果存在个体差异，不能保证达到特定目标。</li>
+                    <li>本人有权在任何阶段询问并了解治疗进展，有权决定继续或终止治疗。</li>
+                    <li>本人承诺如实告知既往病史、过敏史、用药情况及其他相关健康信息。</li>
+                </ul>
+                <p><strong>本人自愿接受上述治疗方案，并愿遵照医嘱配合治疗。</strong></p>
+                <div class="sign-area">
+                    <div class="sign-item">患者签名：________________　　　日期：____年____月____日</div>
+                    <div class="sign-item">医师签名：________________　　　日期：____年____月____日</div>
+                </div>
+                <div class="center">重庆西计医院 · 体重管理门诊，本同意书一式两份，医患双方各执一份</div>
+            `;
+        }
+
+        // 注意事项
+        function getZhuyiHTML() {
+            return `
+                <div class="title">穴位埋线减重治疗 · 术后注意事项</div>
+                <div class="section-title">一、术后当天（24小时内）</div>
+                <table>
+                    <thead><tr><th style="width:20%;">项目</th><th>具体要求</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>局部护理</strong></td><td>埋线部位24小时内禁沾水，保持干燥清洁。</td></tr>
+                        <tr><td><strong>活动</strong></td><td>避免剧烈运动、重体力劳动、长时间弯腰。</td></tr>
+                        <tr><td><strong>饮食</strong></td><td>清淡饮食，避免辛辣、油腻、生冷食物及酒精。</td></tr>
+                        <tr><td><strong>观察</strong></td><td>注意埋线部位有无红、肿、热、痛加剧，有无发热。</td></tr>
+                    </tbody>
+                </table>
+                <div class="section-title">二、术后1~3天</div>
+                <table>
+                    <thead><tr><th style="width:20%;">项目</th><th>具体要求</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>局部反应</strong></td><td>埋线部位可能出现酸胀、轻微疼痛或局部瘀斑，属正常现象，一般3~5天自行缓解。</td></tr>
+                        <tr><td><strong>禁忌</strong></td><td>避免桑拿、泡澡、游泳；保持局部清洁。</td></tr>
+                        <tr><td><strong>饮食</strong></td><td>继续清淡饮食，多饮水，促进代谢。</td></tr>
+                    </tbody>
+                </table>
+                <div class="section-title">三、术后1周内</div>
+                <table>
+                    <thead><tr><th style="width:20%;">项目</th><th>具体要求</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>运动</strong></td><td>可恢复日常轻体力活动，避免剧烈运动、重物提举。</td></tr>
+                        <tr><td><strong>观察</strong></td><td>若埋线部位出现明显红肿、发热、化脓、疼痛加剧，及时联系医生。</td></tr>
+                    </tbody>
+                </table>
+                <div class="section-title">四、联合治疗的特别提醒</div>
+                <table>
+                    <thead><tr><th style="width:20%;">联合治疗</th><th>注意事项</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>+ 减肥针（GLP-1RA）</strong></td><td>注意监测有无恶心、呕吐、腹泻等胃肠道反应；出现剧烈腹痛需警惕胰腺炎。</td></tr>
+                        <tr><td><strong>+ ERCG术</strong></td><td>建议埋线与ERCG术间隔2周以上；术后饮食恢复按ERCG术后进度执行。</td></tr>
+                    </tbody>
+                </table>
+                <div class="section-title">五、需紧急就医的异常信号</div>
+                <table>
+                    <thead><tr><th style="width:20%;">症状</th><th>提示</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>埋线部位红、肿、热、痛加剧伴发热（体温＞38.5℃）</strong></td><td>局部感染可能</td></tr>
+                        <tr><td><strong>剧烈腹痛、腹胀、恶心呕吐</strong></td><td>腹腔感染或其他急腹症可能</td></tr>
+                        <tr><td><strong>呼吸困难、皮疹、瘙痒</strong></td><td>过敏反应可能</td></tr>
+                    </tbody>
+                </table>
+                <div class="section-title">六、长期建议</div>
+                <ul>
+                    <li><strong>疗程配合：</strong>每2周埋线1次，3次为1个疗程，建议完成2~3个疗程。</li>
+                    <li><strong>生活方式：</strong>配合健康饮食及规律运动（每周≥150分钟有氧运动），效果更佳。</li>
+                    <li><strong>定期监测：</strong>每月测量体重、腰围并记录，便于评估疗效。</li>
+                    <li><strong>复诊：</strong>按医嘱定期复诊，调整治疗方案。</li>
+                </ul>
+            `;
+        }
+
+        // ===== 绑定打印按钮 =====
+        printBianzhengBtn.addEventListener('click', function() {
+            window.print();
+        });
+        printXuanjiaoBtn.addEventListener('click', function() {
+            printContent(getXuanjiaoHTML(), '埋线减肥宣教', false);
+        });
+        printTongyiBtn.addEventListener('click', function() {
+            printContent(getTongyiHTML(), '知情同意书', true);
+        });
+        printZhuyiBtn.addEventListener('click', function() {
+            printContent(getZhuyiHTML(), '埋线后注意事项', false);
+        });
+
+        // ===== 双击标题快速测试 =====
+        document.querySelector('.header-title')?.addEventListener('dblclick', function() {
+            document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+            const presets = [
+                '🔥 消谷善饥', '💧 口干喜冷饮', '🧴 身体沉重/痰多',
+                '舌质红', '舌苔黄厚腻',
+                '脉滑', '脉数（速）',
+                '心下痞硬/压痛', '腹部胀满/鼓音',
+                '❄️ 畏寒肢冷/腰膝酸软', '🌙 五更泄泻/夜尿频'
+            ];
+            document.querySelectorAll('.tag').forEach(tag => {
+                const label = tag.textContent.trim().replace(/\s\+\d+$/, '').trim();
+                if (presets.some(p => label.includes(p) || p.includes(label))) {
+                    tag.classList.add('active');
+                }
+            });
+            analyze();
+        });
+
+    })();
+</script>
+</body>
+</html>
